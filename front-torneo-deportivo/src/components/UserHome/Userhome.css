@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+}
+
+h2 {
+  margin-top: -10rem;
+  font-weight: 400;
+}
+
+h1 {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  opacity: 0.5;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+figure {
+  width: 500px;
+  aspect-ratio: 8 / 5;
+  --bg: hsl(330 80% calc(90% - (var(--hover) * 10%)));
+  --accent: hsl(280 80% 40%);
+  transition: background 0.2s;
+  background:
+    radial-gradient(circle at top left, var(--accent), transparent 75%),
+    var(--bg);
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  align-items: 'center';
+}
+
+figure:after {
+  content: "";
+  position: absolute;
+  width: 20%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  bottom: 0%;
+  left: 10%;
+  background: linear-gradient(-65deg, var(--bg) 50%, var(--accent) 50%);
+  filter: blur(25px);
+  transform:
+    translateX(calc(var(--hover) * 15%))
+    scale(calc(1 + (var(--hover) * 0.2)));
+  transition: transform 0.2s, background 0.2s;
+}
+
+img {
+  position: absolute;
+  left: 20%;
+  margin-left: 5vh;
+  top: 15%;
+  width: 40%;
+  transform:
+    translateX(calc(var(--hover) * 0%))
+    scale(calc(1 + (var(--hover) * 0.2)));
+  transition: transform 0.2s;
+}
+
+article {
+  --hover: 0;
+}
+
+article:hover {
+  --hover: 1;
+}
+
+
+.link {
+  width: 10rem;
+  height: 10rem;
+  display: inline-block;
+  font: 300 1.55rem/1.4 "Josefin Sans";
+  text-transform: uppercase;
+  letter-spacing: 0.1175em;
+  word-spacing: 0.3em;
+  text-decoration: none;
+}
+.link__svg {
+  width: 100%;
+  height: auto;
+  margin-left: 10rem;
+  transform-box: fill-box;
+  fill: #2B3338;
+  stroke: #2B3338;
+  stroke-width: 0.05em;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.link__cloud {
+  transform-origin: 50% 50%;
+  -webkit-animation: rotate normal infinite 60s linear;
+          animation: rotate normal infinite 60s linear;
+  fill: rgba(255, 255, 255, 0.15);
+}
+.link__face, .link__arrow {
+  transform-origin: 50% 50%;
+  transition: transform 0.15s cubic-bezier(0.32, 0, 0.67, 0);
+}
+.link:hover .link__face, .link:hover .link__arrow {
+  transform: scale(1.1);
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.link__arrow {
+  stroke-width: 0.075em;
+}
+.link__text {
+  -webkit-animation: rotateReverse normal infinite 20s linear;
+          animation: rotateReverse normal infinite 20s linear;
+  transform-origin: 50% 50%;
+}
+.link:hover .link__text {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+.link--alt {
+  font-size: 1.15rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+
+@-webkit-keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotateReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes rotateReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
