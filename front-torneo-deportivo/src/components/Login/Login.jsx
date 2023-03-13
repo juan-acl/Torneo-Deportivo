@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import './Login.css'
-import {url} from '../../api'
-import axios from "axios";
-import Swal from "sweetalert2";
+import React, { useState } from "react"; 
+import './Login.css' 
+import {url} from '../../api' 
+import axios from "axios"; 
+import Swal from "sweetalert2"; 
 import { useNavigate } from "react-router-dom";
-
 
 function Login({setToken}) {
 
@@ -57,7 +56,7 @@ const onSubmitLogin = async (e) => {
         <div className="shape"></div>
         <div className="shape"></div>
     </div>
-      <form onSubmit={onSubmitLogin} >  
+      <form className="form" onSubmit={onSubmitLogin} >  
         <h3>Login Here</h3>
 
         <label htmlFor="username">Username</label>
